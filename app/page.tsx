@@ -46,12 +46,9 @@ export default function Home() {
       <nav className="border-b border-white/10 sticky top-0 bg-black/20 backdrop-blur supports-[backdrop-filter]:bg-black/20 z-40">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           <Logo />
-          <Link
-            href="/login"
-            className="text-gray-200 hover:text-white transition font-semibold"
-          >
-            Login
-          </Link>
+          <LoginButton>
+            Start For Free
+          </LoginButton>
         </div>
       </nav>
 
@@ -207,7 +204,7 @@ export default function Home() {
           <p className="text-xl text-gray-400">Choose your plan to start automating</p>
         </motion.div>
         
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {/* Free Plan */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -338,6 +335,62 @@ export default function Home() {
               <Link
                 href="/dashboard"
                 className="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center"
+              >
+                Go to Dashboard
+              </Link>
+            ) : (
+              <LoginButton className="w-full text-lg py-3">
+                Get Started
+              </LoginButton>
+            )}
+          </motion.div>
+
+          {/* Agency Pro Plan */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="bg-gradient-to-br from-purple-600/20 to-pink-600/20 backdrop-blur border border-purple-500/30 rounded-2xl p-8 flex flex-col relative"
+          >
+            <div className="absolute -top-4 right-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-2 rounded-xl text-sm font-semibold">
+              Enterprise
+            </div>
+            
+            <h3 className="text-2xl font-bold mb-2">Agency Pro</h3>
+            <div className="text-4xl font-bold mb-4">$499 <span className="text-lg text-gray-400">/ month</span></div>
+            <p className="text-gray-400 mb-8">For large agencies and enterprises</p>
+            
+            <ul className="space-y-4 mb-8 flex-grow">
+              <li className="flex items-center gap-3">
+                <CheckCircle className="text-green-400" size={20} />
+                <span className="text-gray-300">Everything in Foundry</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <CheckCircle className="text-green-400" size={20} />
+                <span className="text-gray-300">Unlimited accounts</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <CheckCircle className="text-green-400" size={20} />
+                <span className="text-gray-300">Custom AI models</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <CheckCircle className="text-green-400" size={20} />
+                <span className="text-gray-300">White-glove onboarding</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <CheckCircle className="text-green-400" size={20} />
+                <span className="text-gray-300">24/7 phone support</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <CheckCircle className="text-green-400" size={20} />
+                <span className="text-gray-300">SLA guarantee</span>
+              </li>
+            </ul>
+
+            {isLoggedIn ? (
+              <Link
+                href="/dashboard"
+                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center"
               >
                 Go to Dashboard
               </Link>

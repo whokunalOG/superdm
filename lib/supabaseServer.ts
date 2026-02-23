@@ -1,8 +1,8 @@
 import { cookies } from 'next/headers';
 import { createServerClient } from '@supabase/ssr';
 
-export function getSupabaseServerClient() {
-  const cookieStore = cookies();
+export async function getSupabaseServerClient() {
+  const cookieStore = await cookies();
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
@@ -11,7 +11,7 @@ export function getSupabaseServerClient() {
     throw new Error('Missing Supabase credentials in environment variables');
   }
 
-  return createServerClient(supabaseUrl, supabaseAnonKey, {
+  const client = createServerClient(supabaseUrl, supabaseAnonKey, {
     auth: {
       flowType: 'pkce',
     },
@@ -19,7 +19,7 @@ export function getSupabaseServerClient() {
       getAll() {
         return cookieStore.getAll();
       },
-      setAll(cookiesToSet: { name: string; value: string; options?: any }[]) {
+      setAll(cookiesToSet: { name: string; value: string; options: import('@supabase/ssr').CookieOptions }[]) {
         try {
           cookiesToSet.forEach(({ name, value, options }) => {
             cookieStore.set(name, value, options);
@@ -30,4 +30,6 @@ export function getSupabaseServerClient() {
       },
     },
   });
+
+  return client;
 }
