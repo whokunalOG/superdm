@@ -46,9 +46,12 @@ export default function Home() {
       <nav className="border-b border-white/10 sticky top-0 bg-black/20 backdrop-blur supports-[backdrop-filter]:bg-black/20 z-40">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           <Logo />
-          <LoginButton>
+          <Link
+            href="/login"
+            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 shadow-[0_0_30px_rgba(99,102,241,0.35)] hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] transform hover:scale-105"
+          >
             Start For Free
-          </LoginButton>
+          </Link>
         </div>
       </nav>
 
@@ -75,12 +78,15 @@ export default function Home() {
                   href="/dashboard"
                   className="group inline-flex items-center justify-center rounded-xl px-8 py-4 font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 shadow-[0_0_30px_rgba(99,102,241,0.35)] hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] transform hover:scale-105 transition-all duration-300"
                 >
-                  <span className="text-lg">Start For Free</span>
+                  <span className="text-lg">Go to Dashboard</span>
                 </Link>
               ) : (
-                <LoginButton className="text-lg px-8 py-4">
-                  Start For Free
-                </LoginButton>
+                <Link
+                  href="/login"
+                  className="group inline-flex items-center justify-center rounded-xl px-8 py-4 font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 shadow-[0_0_30px_rgba(99,102,241,0.35)] hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] transform hover:scale-105 transition-all duration-300"
+                >
+                  <span className="text-lg">Start For Free</span>
+                </Link>
               )}
             </div>
 
@@ -236,12 +242,15 @@ export default function Home() {
                 href="/dashboard"
                 className="w-full bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center"
               >
-                Start For Free
+                Go to Dashboard
               </Link>
             ) : (
-              <LoginButton className="w-full text-lg py-3">
+              <Link
+                href="/login"
+                className="w-full bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center"
+              >
                 Start For Free
-              </LoginButton>
+              </Link>
             )}
           </motion.div>
 
@@ -284,12 +293,15 @@ export default function Home() {
                 href="/dashboard"
                 className="w-full bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center"
               >
-                Start For Free
+                Go to Dashboard
               </Link>
             ) : (
-              <LoginButton className="w-full text-lg py-3">
+              <Link
+                href="/login"
+                className="w-full bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center"
+              >
                 Get Started
-              </LoginButton>
+              </Link>
             )}
           </motion.div>
 
@@ -336,12 +348,15 @@ export default function Home() {
                 href="/dashboard"
                 className="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center"
               >
-                Start For Free
+                Go to Dashboard
               </Link>
             ) : (
-              <LoginButton className="w-full text-lg py-3">
+              <Link
+                href="/login"
+                className="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center"
+              >
                 Get Started
-              </LoginButton>
+              </Link>
             )}
           </motion.div>
 
@@ -392,12 +407,15 @@ export default function Home() {
                 href="/dashboard"
                 className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center"
               >
-                Start For Free
+                Go to Dashboard
               </Link>
             ) : (
-              <LoginButton className="w-full text-lg py-3">
+              <Link
+                href="/login"
+                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center"
+              >
                 Get Started
-              </LoginButton>
+              </Link>
             )}
           </motion.div>
         </div>
