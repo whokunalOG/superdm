@@ -75,7 +75,7 @@ export default function Home() {
                   href="/dashboard"
                   className="group inline-flex items-center justify-center rounded-xl px-8 py-4 font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 shadow-[0_0_30px_rgba(99,102,241,0.35)] hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] transform hover:scale-105 transition-all duration-300"
                 >
-                  <span className="text-lg">Go to Dashboard</span>
+                  <span className="text-lg">Start For Free</span>
                 </Link>
               ) : (
                 <LoginButton className="text-lg px-8 py-4">
@@ -236,7 +236,7 @@ export default function Home() {
                 href="/dashboard"
                 className="w-full bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center"
               >
-                Go to Dashboard
+                Start For Free
               </Link>
             ) : (
               <LoginButton className="w-full text-lg py-3">
@@ -284,7 +284,7 @@ export default function Home() {
                 href="/dashboard"
                 className="w-full bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center"
               >
-                Go to Dashboard
+                Start For Free
               </Link>
             ) : (
               <LoginButton className="w-full text-lg py-3">
@@ -336,7 +336,7 @@ export default function Home() {
                 href="/dashboard"
                 className="w-full bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center"
               >
-                Go to Dashboard
+                Start For Free
               </Link>
             ) : (
               <LoginButton className="w-full text-lg py-3">
@@ -392,7 +392,7 @@ export default function Home() {
                 href="/dashboard"
                 className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center"
               >
-                Go to Dashboard
+                Start For Free
               </Link>
             ) : (
               <LoginButton className="w-full text-lg py-3">

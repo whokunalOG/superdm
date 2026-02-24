@@ -1,14 +1,15 @@
-import { createClient } from '@/lib/supabase';
+import { createClient } from '@/utils/supabase/server';
 import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET(request: Request) {
   const requestUrl = new URL(request.url);
-  const code = requestUrl.searchParams.get('code');
+  const { searchParams } = new URL(request.url);
+  const code = searchParams.get('code');
 
   if (code) {
-    const supabase = createClient();
+    const supabase = await createClient();
 
     try {
       const { data, error } = await supabase.auth.exchangeCodeForSession(code);
@@ -24,12 +25,10 @@ export async function GET(request: Request) {
           .from('profiles')
           .upsert({
             id: data.user.id,
-            email: data.user.email,
-            name: data.user.user_metadata?.full_name || data.user.email?.split('@')[0],
-            avatar_url: data.user.user_metadata?.avatar_url,
+            email: data.user.email || '',
+            name: data.user.user_metadata?.full_name || data.user.email?.split('@')[0] || '',
+            avatar_url: data.user.user_metadata?.avatar_url || '',
             updated_at: new Date().toISOString(),
-          }, {
-            onConflict: 'id'
           });
 
         if (profileError) {
