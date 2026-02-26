@@ -24,6 +24,26 @@ export default function LoginPage() {
     void load();
   }, [router, supabase]);
 
+  const signInWithGoogle = async () => {
+    setMessage(null);
+    setLoading(true);
+    try {
+      const origin = window.location.origin;
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${origin}/auth/callback`,
+        },
+      });
+
+      if (error) {
+        setMessage(error.message);
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setMessage(null);
@@ -50,50 +70,30 @@ export default function LoginPage() {
     }
   };
 
-  const signInWithGitHub = async () => {
-    setMessage(null);
-    setLoading(true);
-    try {
-      const origin = window.location.origin;
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'github',
-        options: {
-          redirectTo: `${origin}/auth/callback`,
-        },
-      });
-
-      if (error) {
-        setMessage(error.message);
-      }
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <main className="min-h-screen bg-bg text-accent flex items-center justify-center px-4">
+    <main className="min-h-screen bg-[#0F1117] text-white flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-6">
           <div className="inline-flex items-center gap-2">
-            <Instagram className="text-primary" size={26} />
+            <Instagram className="text-indigo-500" size={26} />
             <span className="text-2xl font-extrabold tracking-tight">SuperDM</span>
           </div>
           <p className="text-gray-300 mt-2">Sign in to create and manage your automations.</p>
         </div>
 
-        <div className="rounded-2xl border border-border bg-white/5 backdrop-blur p-6 shadow-[0_0_40px_rgba(0,0,0,0.35)]">
+        <div className="rounded-2xl border border-white/10 bg-black/40 backdrop-blur p-6 shadow-[0_0_40px_rgba(0,0,0,0.35)]">
           <button
-            onClick={signInWithGitHub}
+            onClick={signInWithGoogle}
             disabled={loading}
-            className="w-full bg-white/10 hover:bg-white/15 border border-border text-white font-semibold py-3 rounded-xl transition"
+            className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-3 rounded-xl transition shadow-[0_0_30px_rgba(99,102,241,0.35)] hover:shadow-[0_0_40px_rgba(99,102,241,0.6)] transform hover:scale-105"
           >
-            Continue with GitHub
+            {loading ? 'Signing in...' : 'Continue with Google'}
           </button>
 
           <div className="flex items-center gap-3 my-6">
-            <div className="h-px bg-border flex-1" />
+            <div className="h-px bg-white/10 flex-1" />
             <div className="text-xs text-gray-400 font-semibold">OR</div>
-            <div className="h-px bg-border flex-1" />
+            <div className="h-px bg-white/10 flex-1" />
           </div>
 
           <form onSubmit={onSubmit} className="space-y-3">
@@ -103,13 +103,13 @@ export default function LoginPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full bg-bg border border-border rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-primary transition"
+              className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition"
             />
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-primary hover:bg-primary/90 disabled:bg-gray-600 text-black font-semibold py-3 rounded-xl transition shadow-[0_0_24px_rgba(129,140,248,0.25)]"
+              className="w-full bg-indigo-600 hover:bg-indigo-700 disabled:bg-gray-600 text-white font-semibold py-3 rounded-xl transition shadow-[0_0_24px_rgba(129,140,248,0.25)]"
             >
               {loading ? 'Sending link…' : 'Send magic link'}
             </button>
